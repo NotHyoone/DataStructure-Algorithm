@@ -1,0 +1,13 @@
+# Executable files
+*.exe
+*.out
+*.o
+*.a
+*.so
+*.dll
+*.dylib
+
+# Build directories
+/build/
+/dist/
+/bin/
