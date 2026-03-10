@@ -7,6 +7,9 @@
 *.dll
 *.dylib
 
+# IntelliJ local metadata
+.idea/
+
 # Build directories
 /build/
 /dist/
