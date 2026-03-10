@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="20fd290d-b649-4a97-91c1-065eb0e8cff2" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/chap2/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chap2/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chap2/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chap2/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chap2/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chap2/chap2.iml" afterDir="false" />
-    </list>
+    <list default="true" id="20fd290d-b649-4a97-91c1-065eb0e8cff2" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -137,6 +130,7 @@
       <workItem from="1773070455753" duration="127000" />
       <workItem from="1773070661421" duration="42000" />
       <workItem from="1773073698436" duration="32000" />
+      <workItem from="1773073784550" duration="4000" />
     </task>
     <task id="LOCAL-00001" summary="오늘의 복습&#10;&#10;3.9일자 알고리즘 복습(selection sort, insertion sort, shell sort) &#10;and coursera Algorithm part1 모듈1 완료">
       <option name="closed" value="true" />
