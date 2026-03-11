@@ -15,8 +15,12 @@ public class Selection extends AbstractSort {
 
     public static void main(String[] args) {
         Integer[] a = {10, 4, 5, 2, 1, 8, 3, 6};
+        String[] b = {"E", "A", "S", "Y", "Q", "U", "E", "S", "T", "I", "O", "N"};
         Selection.sort(a);
         Selection.show(a);
+
+        Selection.sort(b);
+        Selection.show(b);
     }
 
 }
