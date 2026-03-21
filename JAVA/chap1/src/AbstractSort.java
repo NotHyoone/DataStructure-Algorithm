@@ -1,7 +1,7 @@
 public abstract class AbstractSort {
     public static void sort(Comparable[] a) {};
 
-    protected static boolean less(Comparable v, Comparable w) {
+    protected static <T extends Comparable<? super T>>boolean less(T v, T w) {
         return v.compareTo(w) < 0;  // v < w
     }
 
