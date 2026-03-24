@@ -24,10 +24,7 @@ public class HW2 {
         head.next.next.next.next = new ListNode(0);
 
         Solution2 sol = new Solution2();
-        System.out.println("정렬 전");
-        printList(head);
         head = sol.insertionSortList(head);
-        System.out.println("정렬 후");
         printList(head);
     }
 
