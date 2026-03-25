@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-class Node<K, V> {
+class Node_2<K, V> {
     K key;
     V value;
-    Node<K, V> next;
+    Node_2<K, V> next;
 
-    public Node(K key, V value, Node<K,V>next) {
+    public Node_2(K key, V value, Node_2<K,V> next) {
         this.key = key;
         this.value = value;
         this.next = next;
@@ -14,11 +14,11 @@ class Node<K, V> {
 
 
 public class SequentialSearchSTpractice<K, V> {
-    private Node<K,V> first;
+    private Node_2<K,V> first;
     private int N = 0;      // 노드 수
 
     public V get(K key) {
-        for (Node<K,V>x=first; x !=null; x = x.next) {
+        for (Node_2<K,V> x = first; x !=null; x = x.next) {
             if (key.equals(x.key)) {
                 return x.value;
             }
@@ -28,14 +28,14 @@ public class SequentialSearchSTpractice<K, V> {
 
     public void put(K key, V value) {
         // 존재 시 값 변경
-        for (Node<K, V> x =first; x != null; x = x.next) {
+        for (Node_2<K, V> x = first; x != null; x = x.next) {
             if (key.equals(x.key)) {
                 x.value = value;
                 return;
             }
         }
         // 존재 안 하면 추가 (앞에)
-        first = new Node<K, V>(key, value, first);
+        first = new Node_2<K, V>(key, value, first);
         N++;
     }
 
@@ -48,7 +48,7 @@ public class SequentialSearchSTpractice<K, V> {
         }
 
         // 중간 및 끝 삭제
-        for (Node<K, V> x=first; x.next != null; x=x.next) {
+        for (Node_2<K, V> x = first; x.next != null; x=x.next) {
             if (key.equals(x.next.key)) {
                 x.next = x.next.next;
                 N--;
@@ -59,7 +59,7 @@ public class SequentialSearchSTpractice<K, V> {
 
     public Iterable<K> keys() {
         ArrayList<K> keyList = new ArrayList<K>(N);
-        for (Node<K, V> x=first; x!=null; x=x.next) {
+        for (Node_2<K, V> x = first; x!=null; x=x.next) {
             keyList.add(x.key);
         }
         return keyList;
