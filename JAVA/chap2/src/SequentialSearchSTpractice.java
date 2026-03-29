@@ -1,24 +1,21 @@
 import java.util.ArrayList;
 
-class Node_2<K, V> {
+class Node_SS<K,V> {
     K key;
     V value;
-    Node_2<K, V> next;
+    Node_SS<K,V> next;
 
-    public Node_2(K key, V value, Node_2<K,V> next) {
-        this.key = key;
-        this.value = value;
-        this.next = next;
+    public Node_SS(K key, V value, Node_SS<K,V> next) {
+        this.key = key; this.value = value; this.next = next;
     }
 }
 
-
-public class SequentialSearchSTpractice<K, V> {
-    private Node_2<K,V> first;
-    private int N = 0;      // 노드 수
+public class SequentialSearchSTpractice<K,V> {
+    private Node_SS<K,V> first;
+    int N = 0;
 
     public V get(K key) {
-        for (Node_2<K,V> x = first; x !=null; x = x.next) {
+        for (Node_SS<K,V> x = first; x != null; x = x.next) {
             if (key.equals(x.key)) {
                 return x.value;
             }
@@ -27,31 +24,26 @@ public class SequentialSearchSTpractice<K, V> {
     }
 
     public void put(K key, V value) {
-        // 존재 시 값 변경
-        for (Node_2<K, V> x = first; x != null; x = x.next) {
+        for (Node_SS<K,V> x = first; x != null; x = x.next) {
             if (key.equals(x.key)) {
-                x.value = value;
+                value = x.value;
                 return;
             }
         }
-        // 존재 안 하면 추가 (앞에)
-        first = new Node_2<K, V>(key, value, first);
+        first = new Node_SS<K,V>(key, value, first);
         N++;
     }
 
     public void delete(K key) {
-        // 맨 앞 삭제
+        // 첫 번째 노드 삭제
         if (key.equals(first.key)) {
-            first = first.next;
-            N--;
+            first = first.next; N--;
             return;
         }
-
-        // 중간 및 끝 삭제
-        for (Node_2<K, V> x = first; x.next != null; x=x.next) {
+        // 삭제할 노드 검색
+        for (Node_SS<K,V> x = first; x.next !=null; x = x.next) {
             if (key.equals(x.next.key)) {
-                x.next = x.next.next;
-                N--;
+                x.next = x.next.next; N--;
                 return;
             }
         }
@@ -59,7 +51,7 @@ public class SequentialSearchSTpractice<K, V> {
 
     public Iterable<K> keys() {
         ArrayList<K> keyList = new ArrayList<K>(N);
-        for (Node_2<K, V> x = first; x!=null; x=x.next) {
+        for (Node_SS<K,V> x = first; x != null; x = x.next) {
             keyList.add(x.key);
         }
         return keyList;
@@ -72,6 +64,7 @@ public class SequentialSearchSTpractice<K, V> {
     public boolean isEmpty() {
         return N == 0;
     }
+
     public int size() {
         return N;
     }
