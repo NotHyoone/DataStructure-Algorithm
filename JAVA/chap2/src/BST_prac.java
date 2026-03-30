@@ -1,12 +1,12 @@
 import java.util.ArrayList;
-class Node<K,V> {
+class Node_bstprac<K,V> {
     K key;
     V value;
-    Node<K,V> left, right, parent;
+    Node_bstprac<K,V> left, right, parent;
 
     int N;
     int aux;
-    public Node(K key, V value) {
+    public Node_bstprac(K key, V value) {
         this.key = key; this.value = value;
         this.N = 1;
     }
@@ -15,12 +15,12 @@ class Node<K,V> {
 }
 
 public class BST_prac<K extends Comparable<K>, V> {
-    protected Node<K,V> root;
+    protected Node_bstprac<K,V> root;
 
     public int size() {return (root != null) ? root.N : 0;}
 
-    protected Node<K,V> treeSearch(K key) {
-        Node<K,V> x = root;
+    protected Node_bstprac<K,V> treeSearch(K key) {
+        Node_bstprac<K,V> x = root;
 
         while(true) {
             int cmp = key.compareTo(x.key);
@@ -40,24 +40,24 @@ public class BST_prac<K extends Comparable<K>, V> {
     public V get(K key) {
         if (root == null) return null;
 
-        Node<K,V> x = treeSearch(key);
+        Node_bstprac<K,V> x = treeSearch(key);
         if (key.equals(x.key)) return x.value;
         else return null;
     }
 
     public void put(K key, V val) {
         if (root == null) {
-            root = new Node<K,V>(key,val);
+            root = new Node_bstprac<K,V>(key,val);
             return;
         }
 
-        Node<K,V> x = treeSearch(key);
+        Node_bstprac<K,V> x = treeSearch(key);
         int cmp = key.compareTo(x.key);
 
         if (cmp == 0) {
             x.value = val;
         } else {
-            Node<K,V> newNode = new Node<K,V>(key,val);
+            Node_bstprac<K,V> newNode = new Node_bstprac<K,V>(key,val);
 
             if (cmp < 0) x.left = newNode;
             else x.right = newNode;
@@ -67,13 +67,13 @@ public class BST_prac<K extends Comparable<K>, V> {
         }
     }
 
-    protected void rebalanceInsert(Node<K,V> x) {
+    protected void rebalanceInsert(Node_bstprac<K,V> x) {
         resetSize(x.parent, 1);
     }
-    protected void rebalanceDelete(Node<K,V> p, Node<K,V> deleted) {
+    protected void rebalanceDelete(Node_bstprac<K,V> p, Node_bstprac<K,V> deleted) {
         resetSize(p, -1);
     }
-    private void resetSize(Node<K,V> x, int value) {
+    private void resetSize(Node_bstprac<K,V> x, int value) {
         for( ; x != null; x = x.parent) x.N += value;
     }
 
@@ -85,7 +85,7 @@ public class BST_prac<K extends Comparable<K>, V> {
         return keyList;
     }
 
-    private void inorder(Node<K,V> x, ArrayList<K> keyList) {
+    private void inorder(Node_bstprac<K,V> x, ArrayList<K> keyList) {
         if (x != null) {
             inorder(x.left, keyList);
             keyList.add(x.key);
@@ -96,7 +96,7 @@ public class BST_prac<K extends Comparable<K>, V> {
     public void delete(K key) {
         if (root == null) return;
 
-        Node<K,V> x,y,p;
+        Node_bstprac<K,V> x,y,p;
         x = treeSearch(key);
         if (!key.equals(x.key)) return;
 
@@ -128,42 +128,42 @@ public class BST_prac<K extends Comparable<K>, V> {
 
     public boolean contains(K key) {return get(key) != null;}
     public boolean isEmpty() {return root == null;}
-    protected boolean isLeaf(Node<K,V> x) {return x.left == null && x.right == null;}
-    protected boolean isTwoNode(Node<K,V> x) {return x.left != null && x.right != null;}
-    protected void relink(Node<K,V> parent, Node<K,V> child, boolean makeLeft) {
+    protected boolean isLeaf(Node_bstprac<K,V> x) {return x.left == null && x.right == null;}
+    protected boolean isTwoNode(Node_bstprac<K,V> x) {return x.left != null && x.right != null;}
+    protected void relink(Node_bstprac<K,V> parent, Node_bstprac<K,V> child, boolean makeLeft) {
         if (child != null) child.parent = parent;
         if (makeLeft) parent.left = child;
         else parent.right = child;
     }
-    protected Node<K,V> min(Node<K,V> x) {
+    protected Node_bstprac<K,V> min(Node_bstprac<K,V> x) {
         while(x.left != null) x = x.left;
         return x;
     }
     public K min() {
         if (root == null) return null;
-        Node<K,V> x = root;
+        Node_bstprac<K,V> x = root;
         while(x.left != null) x = x.left;
         return x.key;
     }
     public K max() {
         if (root == null) return null;
-        Node<K,V> x = root;
+        Node_bstprac<K,V> x = root;
         while(x.right != null) x = x.right;
         return x.key;
     }
 
     public K floor(K key) {
         if (this.root == null || key == null) return null;
-        Node<K,V> x = floor(root,key);
+        Node_bstprac<K,V> x = floor(root,key);
         if (x == null) return null;
         else return x.key;
     }
-    private Node<K,V> floor(Node<K,V> x, K key) {
+    private Node_bstprac<K,V> floor(Node_bstprac<K,V> x, K key) {
         if (x==null) return null;
         int cmp = key.compareTo(x.key);
         if (cmp == 0) return x;
         if (cmp < 0) return floor(x.left, key);
-        Node<K,V> t = floor(x.right, key);
+        Node_bstprac<K,V> t = floor(x.right, key);
         if (t != null) return t;
         else return x;
     }
