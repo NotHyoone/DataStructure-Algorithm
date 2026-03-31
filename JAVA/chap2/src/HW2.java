@@ -250,11 +250,12 @@ public class HW2 {
                     removeKeyAt(x, idx);
                     return true;
                 }
-                Node23 s = x.child[idx + 1];
-                while (!s.leaf()) s = s.child[0];
-                x.keys[idx] = s.keys[0];
-                x.values[idx] = s.values[0];
-                boolean removed = deleteRec(x.child[idx + 1], (K) s.keys[0]);
+
+                Node23 successor = findMinNode(x.child[idx + 1]);
+                K successorKey = (K) successor.keys[0];
+                x.keys[idx] = successor.keys[0];
+                x.values[idx] = successor.values[0];
+                boolean removed = deleteRec(x.child[idx + 1], successorKey);
                 if (removed) fixUnderflow(x, idx + 1);
                 return removed;
             }
@@ -264,6 +265,12 @@ public class HW2 {
             boolean removed = deleteRec(next, key);
             if (removed) fixUnderflow(x, idx);
             return removed;
+        }
+
+        private Node23 findMinNode(Node23 x) {
+            Node23 cur = x;
+            while (!cur.leaf()) cur = cur.child[0];
+            return cur;
         }
 
         private void removeKeyAt(Node23 x, int idx) {
@@ -421,7 +428,7 @@ public class HW2 {
             System.out.println("입력 완료: 소요 시간 = " + (end-start) + "ms");
 
             System.out.println("### 생성 시점의 트리 정보");
-            print_tree(st);		// 정상적으로 출력되면 50점
+            print_tree(st);
 
             ArrayList<String> keyList = (ArrayList<String>) st.keys();
             Collections.shuffle(keyList, rand);
