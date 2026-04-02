@@ -38,7 +38,7 @@ public class HW2 {
 
         private Node23<K,V> root;
         private int  size = 0;
-        private boolean insertedNew;
+        private boolean inserted;
 
         public boolean isEmpty()       { return size == 0; }
         public int     size()          { return size; }
@@ -62,7 +62,7 @@ public class HW2 {
                 size++;
                 return;
             }
-            insertedNew = false;
+            inserted = false;
             Split sp = insert(root, key, value);
             if (sp != null) {
                 Node23<K,V> nr = new Node23<>();
@@ -71,7 +71,7 @@ public class HW2 {
                 nr.ch(0, sp.left); nr.ch(1, sp.right);
                 root = nr;
             }
-            if (insertedNew) size++;
+            if (inserted) size++;
         }
 
         public ArrayList<K> keys() {
@@ -112,7 +112,7 @@ public class HW2 {
                 }
                 x.key(idx, key); x.val(idx, value);
                 x.n++;
-                insertedNew = true;
+                inserted = true;
                 return null;
             }
 
@@ -143,7 +143,7 @@ public class HW2 {
             Node23<K,V> L = new Node23<>(), R = new Node23<>();
             L.n=1; L.key(0,k0); L.val(0,v0);
             R.n=1; R.key(0,k2); R.val(0,v2);
-            insertedNew = true;
+            inserted = true;
             return new Split(k1, v1, L, R);
         }
 
