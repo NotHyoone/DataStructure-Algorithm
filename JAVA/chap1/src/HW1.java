@@ -9,6 +9,8 @@
 // numbers 모든 수 0이상 100이하
 import java.util.Arrays;
 
+import static java.util.Arrays.*;
+
 public class HW1 {
     public static void main(String[] args) {
         Solution1 S = new Solution1();
@@ -18,6 +20,7 @@ public class HW1 {
         System.out.println("출력 = " + Arrays.toString(S.solution(numbers)));
     }
 }
+
 
 class Solution1 {
     public int[] solution(int[] numbers) {
