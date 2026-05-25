@@ -5,7 +5,7 @@ public class LSD {
         String[] aux = new String[N];
 
         for (int d = W - 1; d >= 0; d--) {  // d: 자리수, LSD -> 뒤에서부터
-            int[] count = new int[R];
+            int[] count = new int[R]; // R개의 배열 생성, count[r] = d 자리 문자가 r인 문자열의 개수
             for (int i = 0; i < N; i++)
                 count[a[i].charAt(d)]++;    // d 자리 문자들의 빈도수 계산
             for (int r = 1; r < R; r++)
